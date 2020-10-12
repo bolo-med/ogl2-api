@@ -1,0 +1,53 @@
+Udjemo u VSC.
+
+Otvorimo folder (to nam je projekat).
+
+tsc --init (u terminalu - Terminal / New Terminal)
+
+tsconfig.json, promijenimo fajl:
+"strictNullChecks": false,
+"strictPropertyInitialization": false,
+"experimentalDecorators": true
+
+npm init (moze i: npm init -y)
+
+npm install --save express (instaliramo modul express, da bi bio laksi NodeJS)
+
+npm install --save @types/express (omogucimo sa se automatski prevode fajlovi iz modula, iz TS u JS)
+
+npm install -g ts-node (da automatski pokrenemo TS fajl, bez rucnog kompajliranja. Vazi za citav racunar)
+
+ts-node putanja/ime_fajla.ts (pokretanje fajla)
+
+Ctrl + C (gasimo proces u terminalu)
+
+npm install -g ts-node-dev (da se promjene u kodu automatski osvjezavaju; samo prethodno sacuvamo promjene. Vazi za citav racunar)
+
+ts-node-dev putanja/ime_fajla.ts (sad pokrecemo fajl ovom komandom)
+
+npm install (Ako izbrisemo folder sa modulima, ova komanda ga vraca i instalira module ponovo)
+
+------------------- Baza podataka -------------------------------------------------------------------------
+
+npm install --save typeorm (za povezivanje sa bazom podataka; za mapiranje tabela)
+
+npm install --save mysql (da bi typeorm mogao da komunicira sa mysqlom)
+
+--------------------------------------- Za parsiranje body dijela -------------------------------------------------
+
+npm install --save body-parser
+
+npm install --save @types/body-parser
+
+--------------------- File upload ------------------------------
+
+(za file upload)
+
+npm install --save multer @types/multer
+
+--------------------- Authorization / Authentication -----------------------------
+
+(za user management)
+
+npm install --save passport @types/passport passport-custom jsonwebtoken @types/jsonwebtoken express-jwt @types/express-jwt
+
