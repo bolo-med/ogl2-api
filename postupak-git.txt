@@ -18,7 +18,9 @@ git commit -m "neka poruka" (registrujemo promjene na pracenim fajlovima, u gitu
 
 git remote add origin https://github.com/... (lokalni git upucujemo (povezujemo) na git na internetu; radi se samo jednom)
 
-git push -u origin master (commit cuva promjene lokalno, a push cuva lokalno sacuvane promjene, na internet; master je glavni branch (grana - kojih moze imati vise); sledeci put je dovoljno samo git push? (ako cemo opet u master?))
+git push -u origin master (commit cuva promjene lokalno, a push cuva lokalno sacuvane promjene, na internet; 
+master je glavni branch (grana - kojih moze imati vise); 
+sledeci put je dovoljno samo git push)
 
 ---------------------------------------------------------------------------------------
 

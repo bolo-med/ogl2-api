@@ -12,6 +12,7 @@ export class Kategorija {
     @Column({
         name: 'naziv',
         type: 'char',
+        length: 50,
         nullable: false
     })
     naziv: string;
