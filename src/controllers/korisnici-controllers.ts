@@ -1,8 +1,6 @@
 import { KorisniciRepository } from "../repositories/korisnici-repository";
 import { Request, Response } from 'express';
 import { Korisnik } from "../models/korisnik";
-import { KategorijeRepository } from "../repositories/kategorije-repository";
-
 
 export const getAllKorisnik = (req: Request, res: Response) => {
     let korisniciRepository: KorisniciRepository = new KorisniciRepository();
