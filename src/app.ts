@@ -2,6 +2,7 @@ import express from 'express';
 import { createConnection } from 'typeorm';
 import { dbConfig } from './common/config';
 import kategorijeRouter from './routers/kategorije-router';
+import korisniciRouter from './routers/korisnici-router'
 import bodyParser from 'body-parser';
 
 class App {
@@ -29,6 +30,7 @@ class App {
 
     private routing() {
         this.serverApp.use('/kategorije', kategorijeRouter);
+        this.serverApp.use('/korisnici', korisniciRouter);
     }
 
 }

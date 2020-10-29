@@ -24,7 +24,7 @@ sledeci put je dovoljno samo git push)
 
 ---------------------------------------------------------------------------------------
 
-Sad je readme.md postavljen na github, rer je samo on bio naznacen za pracenje.
+Sad je readme.md postavljen na github, jer je samo on bio naznacen za pracenje.
 
 Sad cemo oznaciti sve ostale fajlove da budu praceni.
 
