@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Oglas } from "./oglas";
 
 @Entity('korisnici')
 export class Korisnik {
@@ -46,6 +47,9 @@ export class Korisnik {
         nullable: false
     })
     isAdmin: number;
+
+    @OneToMany(type => Oglas, oglas => oglas.korisnik)
+    oglasi: Oglas[];
 
 }
 
