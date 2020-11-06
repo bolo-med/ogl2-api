@@ -32,6 +32,20 @@ export class Oglas {
     })
     datumVazenja: Date;
 
+    @Column({
+        name: 'kategorija_id',
+        type: 'int',
+        nullable: false
+    })
+    kategorijaID: number;
+
+    @Column({
+        name: 'korisnik_id',
+        type: 'int',
+        nullable: false
+    })
+    korisnikID: number;
+
     @ManyToOne(type => Kategorija, kategorija => kategorija.oglasi)
     @JoinColumn({name: 'kategorija_id'})
     kategorija: Kategorija;
