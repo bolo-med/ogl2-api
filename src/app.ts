@@ -4,6 +4,7 @@ import { dbConfig } from './common/config';
 import kategorijeRouter from './routers/kategorije-router';
 import korisniciRouter from './routers/korisnici-router'
 import oglasiRouter from './routers/oglasi-router';
+import komentariRouter from './routers/komentari-router';
 import bodyParser from 'body-parser';
 
 class App {
@@ -33,6 +34,7 @@ class App {
         this.serverApp.use('/kategorije', kategorijeRouter);
         this.serverApp.use('/korisnici', korisniciRouter);
         this.serverApp.use('/oglasi', oglasiRouter);
+        this.serverApp.use('/komentari', komentariRouter);
     }
 
 }

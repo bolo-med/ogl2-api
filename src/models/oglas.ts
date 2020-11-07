@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Kategorija } from "./kategorija";
+import { Komentar } from "./komentar";
 import { Korisnik } from "./korisnik";
 
 @Entity('oglasi')
@@ -53,6 +54,9 @@ export class Oglas {
     @ManyToOne(type => Korisnik, korisnik => korisnik.oglasi)
     @JoinColumn({name: 'korisnik_id'})
     korisnik: Korisnik;
+
+    @OneToMany(type => Komentar, komentar => komentar.oglas)
+    komentari: Komentar[];
 
 }
 
