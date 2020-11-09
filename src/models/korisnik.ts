@@ -1,4 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Komentar } from "./komentar";
 import { Oglas } from "./oglas";
 
 @Entity('korisnici')
@@ -50,6 +51,9 @@ export class Korisnik {
 
     @OneToMany(type => Oglas, oglas => oglas.korisnik)
     oglasi: Oglas[];
+
+    @OneToMany(type => Komentar, komentar => komentar.korisnik)
+    komentari: Komentar[];
 
 }
 

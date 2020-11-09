@@ -1,4 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Korisnik } from "./korisnik";
 import { Oglas } from "./oglas";
 
 @Entity('komentari')
@@ -42,9 +43,9 @@ export class Komentar {
     @JoinColumn({name: 'oglas_id'})
     oglas: Oglas;
 
-
-    // Dodati i drugu vezu! ///////////////////////////////////////////////////////////////
-
+    @ManyToOne(type => Korisnik, korisnik => korisnik.komentari)
+    @JoinColumn({name: 'korisnik_id'})
+    korisnik: Korisnik;
 
 }
 
