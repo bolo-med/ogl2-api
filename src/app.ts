@@ -6,6 +6,7 @@ import korisniciRouter from './routers/korisnici-router'
 import oglasiRouter from './routers/oglasi-router';
 import komentariRouter from './routers/komentari-router';
 import bodyParser from 'body-parser';
+import { Request, Response } from 'express';
 
 class App {
 
@@ -28,6 +29,16 @@ class App {
 
     private config() {
         this.serverApp.use(bodyParser.json());
+
+        this.serverApp.use((request: Request, response: Response, next) => {
+            response.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+            response.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Origin, Authorization');
+            response.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+            // response.setHeader("Access-Control-Allow-Credentials", "true"); // sa interneta
+            response.header("Access-Control-Allow-Credentials", "true"); // radi i ovako
+
+            next();
+        });
     }
 
     private routing() {
