@@ -1,14 +1,16 @@
 import express from 'express';
 import * as korisniciControllers from './../controllers/korisnici-controllers';
+import expressjwt from 'express-jwt';
 
 const korisniciRouter = express.Router();
 
-korisniciRouter.route('').get(korisniciControllers.getAllKorisnik)
-                         .post(korisniciControllers.insertKorisnik)
-                         .put(korisniciControllers.updateKorisnik);
+korisniciRouter.route('/korisnici').get(korisniciControllers.getAllKorisnik)
+                                   .put(korisniciControllers.updateKorisnik);
 
-korisniciRouter.route('/:id').get(korisniciControllers.getKorisnikByID)
-                             .delete(korisniciControllers.deleteKorisnik);
+korisniciRouter.route('/korisnici/:id').get(korisniciControllers.getKorisnikByID)
+                                       .delete(korisniciControllers.deleteKorisnik);
+
+korisniciRouter.post('/register', korisniciControllers.register);
 
 export default korisniciRouter;
 

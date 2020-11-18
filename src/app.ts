@@ -43,7 +43,7 @@ class App {
 
     private routing() {
         this.serverApp.use('/kategorije', kategorijeRouter);
-        this.serverApp.use('/korisnici', korisniciRouter);
+        this.serverApp.use('', korisniciRouter);
         this.serverApp.use('/oglasi', oglasiRouter);
         this.serverApp.use('/komentari', komentariRouter);
     }
