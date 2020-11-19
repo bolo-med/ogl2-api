@@ -110,12 +110,12 @@ export const register = (req: Request, res: Response) => {
 
         res.send({
             status: 0,
-            data: token
+            token: token
         });
     }).catch(err => {
         res.send({
             status: -1,
-            data: err
+            error: err
         });
     });
 };
