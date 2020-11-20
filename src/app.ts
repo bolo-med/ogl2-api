@@ -7,6 +7,10 @@ import oglasiRouter from './routers/oglasi-router';
 import komentariRouter from './routers/komentari-router';
 import bodyParser from 'body-parser';
 import { Request, Response } from 'express';
+import passport from 'passport';
+import passportCustom from 'passport-custom';
+import crypto from 'crypto';
+import { KorisniciRepository } from './repositories/korisnici-repository';
 
 class App {
 
@@ -17,6 +21,7 @@ class App {
         this.config();
         this.connectToDB();
         this.routing();
+        this.authConfig();
     }
 
     private connectToDB() {
@@ -46,6 +51,31 @@ class App {
         this.serverApp.use('', korisniciRouter);
         this.serverApp.use('/oglasi', oglasiRouter);
         this.serverApp.use('/komentari', komentariRouter);
+    }
+
+    private authConfig() {
+
+        passport.use('custom', new passportCustom.Strategy((request, done) => {
+            let korisniciRepository = new KorisniciRepository();
+            korisniciRepository.getKorisnikByUsername(request.body.username).then(data => {
+                let hash = crypto.pbkdf2Sync(request.body.password, 
+                                             'SALT', 
+                                             1000, 
+                                             64, 
+                                             'SHA512').toString('hex');
+
+                if (hash.toLowerCase() === data.hashedPassword.toLowerCase()) {
+                    done(null, data);
+                }
+                else {
+                    done('Pogresni kredencijali!');
+                }
+            }).catch(err => {
+                done(err);
+            });
+        }));
+
+        this.serverApp.use(passport.initialize());
     }
 
 }

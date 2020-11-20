@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { Korisnik } from "../models/korisnik";
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
+import passport from "passport";
 
 export const getAllKorisnik = (req: Request, res: Response) => {
     let korisniciRepository: KorisniciRepository = new KorisniciRepository();
@@ -118,5 +119,32 @@ export const register = (req: Request, res: Response) => {
             error: err
         });
     });
+};
+
+export const login = (req: Request, res: Response) => {
+    passport.authenticate('custom', (error, user) => {
+        if (error) {
+            res.send({
+                status: -1,
+                error: error // Vraca prazan objekat - {}. Treba li tako?
+            });
+        }
+        else {
+            let datIsteka = new Date();
+            datIsteka.setDate(datIsteka.getDate() + 1);
+
+            let token = jwt.sign({
+                id: user.id,
+                username: user.username,
+                isAdmin: user.isAdmin,
+                expiry: datIsteka
+            }, 'SECRET');
+
+            res.send({
+                status: 0,
+                token: token
+            });
+        }
+    })(req, res);
 };
 

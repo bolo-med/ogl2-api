@@ -23,5 +23,13 @@ export class KorisniciRepository {
         return getManager().getRepository(Korisnik).delete(id);
     };
 
+    getKorisnikByUsername = (username: string) => {
+        return getManager().getRepository(Korisnik).findOne({
+            where: {
+                'username': username
+            }
+        });
+    };
+
 }
 
