@@ -34,6 +34,13 @@ export class Oglas {
     datumVazenja: Date;
 
     @Column({
+        name: 'arhiviran',
+        type: 'int',
+        nullable: false
+    })
+    arhiviran: number;
+
+    @Column({
         name: 'kategorija_id',
         type: 'int',
         nullable: false

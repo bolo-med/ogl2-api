@@ -32,6 +32,7 @@ export const insertOglas = (req: Request, res: Response) => {
     oglas.tekst = req.body.tekst;
     oglas.datumObjave = req.body.datumObjave;
     oglas.datumVazenja = req.body.datumVazenja;
+    oglas.arhiviran = 0;
     oglas.kategorijaID = req.body.kategorijaID;
     oglas.korisnikID = req.body.korisnikID;
     oglasiRepository.insertOglas(oglas).then(data => {
