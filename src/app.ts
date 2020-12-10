@@ -5,6 +5,7 @@ import kategorijeRouter from './routers/kategorije-router';
 import korisniciRouter from './routers/korisnici-router'
 import oglasiRouter from './routers/oglasi-router';
 import komentariRouter from './routers/komentari-router';
+import podkategorijeRouter from './routers/podkategorije-router';
 import bodyParser from 'body-parser';
 import { Request, Response } from 'express';
 import passport from 'passport';
@@ -51,6 +52,7 @@ class App {
         this.serverApp.use('', korisniciRouter);
         this.serverApp.use('/oglasi', oglasiRouter);
         this.serverApp.use('/komentari', komentariRouter);
+        this.serverApp.use('/podkategorije', podkategorijeRouter);
     }
 
     private authConfig() {
