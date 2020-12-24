@@ -5,9 +5,15 @@ import { KategorijeRepository } from '../repositories/kategorije-repository';
 export const getAllKategorija = (req: Request, res: Response) => {
     let kategorijeRepository: KategorijeRepository = new KategorijeRepository();
     kategorijeRepository.getAllkategorija().then(data => {
-        res.send(data);
+        res.send({
+            status: 0,
+            data
+        });
     }).catch(err => {
-        res.send(err);
+        res.send({
+            status: -1,
+            data: err
+        });
     });
 };
 
