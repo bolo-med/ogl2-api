@@ -13,6 +13,14 @@ export class Oglas {
     id: number;
 
     @Column({
+        name: 'naslov',
+        type: 'varchar',
+        length: 45,
+        nullable: false
+    })
+    naslov: string;
+
+    @Column({
         name: 'tekst',
         type: 'text',
         nullable: false
@@ -46,6 +54,13 @@ export class Oglas {
         nullable: false
     })
     kategorijaID: number;
+
+    @Column({
+        name: 'potkategorija_id',
+        type: 'int',
+        nullable: false
+    })
+    potkategorijaID: number;
 
     @Column({
         name: 'korisnik_id',

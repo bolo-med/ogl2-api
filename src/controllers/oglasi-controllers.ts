@@ -29,11 +29,13 @@ export const getOglasByID = (req: Request, res: Response) => {
 export const insertOglas = (req: Request, res: Response) => {
     let oglasiRepository: OglasiRepository = new OglasiRepository();
     let oglas: Oglas = new Oglas();
+    oglas.naslov = req.body.naslov;
     oglas.tekst = req.body.tekst;
     oglas.datumObjave = req.body.datumObjave;
     oglas.datumVazenja = req.body.datumVazenja;
     oglas.arhiviran = 0;
     oglas.kategorijaID = req.body.kategorijaID;
+    oglas.potkategorijaID = req.body.potkategorijaID;
     oglas.korisnikID = req.body.korisnikID;
     oglasiRepository.insertOglas(oglas).then(data => {
         res.send({
@@ -52,10 +54,12 @@ export const updateOglas = (req: Request, res: Response) => {
     let oglasiRepository: OglasiRepository = new OglasiRepository();
     let oglas: Oglas = new Oglas();
     oglas.id = req.body.id;
+    oglas.naslov = req.body.naslov;
     oglas.tekst = req.body.tekst;
     oglas.datumObjave = req.body.datumObjave;
     oglas.datumVazenja = req.body.datumVazenja;
     oglas.kategorijaID = req.body.kategorijaID;
+    oglas.potkategorijaID = req.body.potkategorijaID;
     oglas.korisnikID = req.body.korisnikID;
     oglasiRepository.updateOglas(oglas).then(data => {
         res.send({
