@@ -1,6 +1,5 @@
 import express from 'express';
 import * as korisniciControllers from './../controllers/korisnici-controllers';
-import expressjwt from 'express-jwt';
 
 const korisniciRouter = express.Router();
 
