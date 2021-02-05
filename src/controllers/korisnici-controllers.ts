@@ -29,28 +29,6 @@ export const getKorisnikByID = (req: Request, res: Response) => {
     });
 };
 
-// Nece mi trebati. Insert ce se obavljati prilikom registracije.
-// export const insertKorisnik = (req: Request, res: Response) => {
-//     let korisniciRepository: KorisniciRepository = new KorisniciRepository();
-//     let korisnik: Korisnik = new Korisnik();
-//     korisnik.ime = req.body.ime;
-//     korisnik.prezime = req.body.prezime;
-//     korisnik.username = req.body.username;
-//     korisnik.hashedPassword = req.body.password;
-//     korisnik.isAdmin = 0;
-//     korisniciRepository.insertKorisnik(korisnik).then(data => {
-//         res.send({
-//             status: 0,
-//             data: data
-//         });
-//     }).catch(err => {
-//         res.send({
-//             status: -1,
-//             data: err
-//         });
-//     });
-// };
-
 export const updateKorisnik = (req: Request, res: Response) => {
     let korisniciRepository: KorisniciRepository = new KorisniciRepository();
     let korisnik: Korisnik = new Korisnik();
