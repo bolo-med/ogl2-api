@@ -60,7 +60,7 @@ export class Oglas {
         type: 'int',
         nullable: false
     })
-    potkategorijaID: number;
+    podkategorijaID: number;
 
     @Column({
         name: 'korisnik_id',

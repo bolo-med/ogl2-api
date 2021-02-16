@@ -35,7 +35,7 @@ export const insertOglas = (req: Request, res: Response) => {
     oglas.datumVazenja = req.body.datumVazenja;
     oglas.arhiviran = 0;
     oglas.kategorijaID = req.body.kategorijaID;
-    oglas.potkategorijaID = req.body.potkategorijaID;
+    oglas.podkategorijaID = req.body.podkategorijaID;
     oglas.korisnikID = req.body.korisnikID;
     oglasiRepository.insertOglas(oglas).then(data => {
         res.send({
@@ -59,7 +59,7 @@ export const updateOglas = (req: Request, res: Response) => {
     oglas.datumObjave = req.body.datumObjave;
     oglas.datumVazenja = req.body.datumVazenja;
     oglas.kategorijaID = req.body.kategorijaID;
-    oglas.potkategorijaID = req.body.potkategorijaID;
+    oglas.podkategorijaID = req.body.podkategorijaID;
     oglas.korisnikID = req.body.korisnikID;
     oglasiRepository.updateOglas(oglas).then(data => {
         res.send({
