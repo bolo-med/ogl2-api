@@ -12,6 +12,7 @@ import passport from 'passport';
 import passportCustom from 'passport-custom';
 import crypto from 'crypto';
 import { KorisniciRepository } from './repositories/korisnici-repository';
+import uploadRouter from './../src/common/file-upload';
 
 class App {
 
@@ -53,6 +54,7 @@ class App {
         this.serverApp.use('/oglasi', oglasiRouter);
         this.serverApp.use('/komentari', komentariRouter);
         this.serverApp.use('/podkategorije', podkategorijeRouter);
+        this.serverApp.use('/upload', uploadRouter);
     }
 
     private authConfig() {
