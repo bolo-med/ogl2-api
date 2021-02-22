@@ -13,6 +13,7 @@ import passportCustom from 'passport-custom';
 import crypto from 'crypto';
 import { KorisniciRepository } from './repositories/korisnici-repository';
 import uploadRouter from './../src/common/file-upload';
+import path from 'path';
 
 class App {
 
@@ -36,6 +37,7 @@ class App {
 
     private config() {
         this.serverApp.use(bodyParser.json());
+        this.serverApp.use(express.static(path.join(__dirname, 'public/uploads')));
 
         this.serverApp.use((request: Request, response: Response, next) => {
             response.header('Access-Control-Allow-Origin', 'http://localhost:4200');
