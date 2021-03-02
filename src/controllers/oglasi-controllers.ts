@@ -31,6 +31,9 @@ export const insertOglas = (req: Request, res: Response) => {
     let oglas: Oglas = new Oglas();
     oglas.naslov = req.body.naslov;
     oglas.tekst = req.body.tekst;
+    oglas.foto01 = req.body.foto01;
+    oglas.foto02 = req.body.foto02;
+    oglas.foto03 = req.body.foto03;
     oglas.datumObjave = req.body.datumObjave;
     oglas.datumVazenja = req.body.datumVazenja;
     oglas.arhiviran = 0;

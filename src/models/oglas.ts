@@ -28,6 +28,30 @@ export class Oglas {
     tekst: string;
 
     @Column({
+        name: 'foto01',
+        type: 'varchar',
+        length: 50,
+        nullable: true
+    })
+    foto01: string;
+
+    @Column({
+        name: 'foto02',
+        type: 'varchar',
+        length: 50,
+        nullable: true
+    })
+    foto02: string;
+
+    @Column({
+        name: 'foto03',
+        type: 'varchar',
+        length: 50,
+        nullable: true
+    })
+    foto03: string;
+
+    @Column({
         name: "dat_objave",
         type: 'date',
         nullable: false
