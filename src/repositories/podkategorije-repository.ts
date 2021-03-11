@@ -4,7 +4,7 @@ import { Podkategorija } from "../models/podkategorija";
 export class PodkategorijeRepository {
 
     getAllPodkategorija = () => {
-        return getManager().getRepository(Podkategorija).find();
+        return getManager().getRepository(Podkategorija).find({relations: ['kategorija']});
     };
 
     getPodkategorijaBuId = (id: number) => {

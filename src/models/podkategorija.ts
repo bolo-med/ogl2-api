@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import kategorijeRouter from "../routers/kategorije-router";
+import { Kategorija } from "./kategorija";
 
 @Entity('podkategorije')
 export class Podkategorija {
@@ -22,6 +24,10 @@ export class Podkategorija {
         nullable: false
     })
     naziv: string;
+
+    @ManyToOne(type => Kategorija, kategorija => kategorija.podkategorije)
+    @JoinColumn({name: 'kategorija_id'})
+    kategorija: Kategorija;
 
 }
 
