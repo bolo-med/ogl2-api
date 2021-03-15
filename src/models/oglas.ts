@@ -2,6 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColum
 import { Kategorija } from "./kategorija";
 import { Komentar } from "./komentar";
 import { Korisnik } from "./korisnik";
+import { Podkategorija } from "./podkategorija";
 
 @Entity('oglasi')
 export class Oglas {
@@ -96,6 +97,10 @@ export class Oglas {
     @ManyToOne(type => Kategorija, kategorija => kategorija.oglasi)
     @JoinColumn({name: 'kategorija_id'})
     kategorija: Kategorija;
+
+    @ManyToOne(type => Podkategorija, podkategorija => podkategorija.oglasi)
+    @JoinColumn({name: 'potkategorija_id'})
+    podkategorija: Podkategorija;
 
     @ManyToOne(type => Korisnik, korisnik => korisnik.oglasi)
     @JoinColumn({name: 'korisnik_id'})

@@ -4,7 +4,7 @@ import { Oglas } from "../models/oglas";
 export class OglasiRepository {
 
     getAllOglas = () => {
-        return getManager().getRepository(Oglas).find();
+        return getManager().getRepository(Oglas).find({relations: ['kategorija', 'podkategorija', 'korisnik']});
     };
 
     getOglasByID = (id: number) => {
