@@ -23,7 +23,7 @@ Ctrl + C (gasimo proces u terminalu)
 
 npm install -g ts-node-dev (da se promjene u kodu automatski osvjezavaju; samo prethodno sacuvamo promjene. Vazi za citav racunar)
 
-ts-node-dev putanja/ime_fajla.ts (sad pokrecemo fajl ovom komandom)
+ts-node-dev putanja/ime_fajla.ts (sad pokrecemo fajl ovom komandom; u datom slucaju: ts-node-dev src/server.ts)
 
 npm install (Ako izbrisemo folder sa modulima, ova komanda ga vraca i instalira module ponovo)
 
