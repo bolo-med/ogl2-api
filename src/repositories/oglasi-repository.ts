@@ -8,7 +8,7 @@ export class OglasiRepository {
     };
 
     getOglasByID = (id: number) => {
-        return getManager().getRepository(Oglas).findOne(id);
+        return getManager().getRepository(Oglas).findOne(id, {relations: ['kategorija', 'podkategorija', 'korisnik', 'komentari']});
     };
 
     insertOglas = (oglas: Oglas) => {

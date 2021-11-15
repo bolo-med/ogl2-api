@@ -9,6 +9,7 @@ export class KategorijeRepository {
 
     getKategorijaByID = (id: number) => {
         return getManager().getRepository(Kategorija).findOne(id);
+        // return getManager().getRepository(Kategorija).findOne(id, {relations: ['podkategorije']});
     };
 
     insertKategorija = (kategorija: Kategorija) => {
