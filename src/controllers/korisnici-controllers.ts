@@ -29,6 +29,29 @@ export const getKorisnikByID = (req: Request, res: Response) => {
     });
 };
 
+export const getKorisnikByUsername = (req: Request, res: Response) => {
+    let korisniciRepository: KorisniciRepository = new KorisniciRepository();
+    korisniciRepository.getKorisnikByUsername(req.params.ime).then(data => {
+        res.send(data)
+    }).catch(err => {
+        res.send(err);
+    });
+};
+
+export const postojiLiKorisnicko = (req: Request, res: Response) => {
+    let korisniciRepository: KorisniciRepository = new KorisniciRepository();
+    korisniciRepository.getKorisnikByUsername(req.params.ime).then(data => {
+        if (data) {
+            res.send(true);
+        }
+        else {
+            res.send(false)
+        }
+    }).catch(err => {
+        res.send(err);
+    });
+};
+
 export const updateKorisnik = (req: Request, res: Response) => {
     let korisniciRepository: KorisniciRepository = new KorisniciRepository();
     let korisnik: Korisnik = new Korisnik();
