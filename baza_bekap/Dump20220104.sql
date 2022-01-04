@@ -68,7 +68,6 @@ CREATE TABLE `komentari` (
 
 LOCK TABLES `komentari` WRITE;
 /*!40000 ALTER TABLE `komentari` DISABLE KEYS */;
-INSERT INTO `komentari` VALUES (2,'probni komentar 2','2020-11-07',1,11),(3,'probni komentar 333','2020-11-07',1,12);
 /*!40000 ALTER TABLE `komentari` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +87,7 @@ CREATE TABLE `korisnici` (
   `is_admin` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +96,7 @@ CREATE TABLE `korisnici` (
 
 LOCK TABLES `korisnici` WRITE;
 /*!40000 ALTER TABLE `korisnici` DISABLE KEYS */;
-INSERT INTO `korisnici` VALUES (11,'adm','adm','adm','65dde25a25139bd3a899ad1f24bd921a3b04409acc72381780093d9545979c6f2102d5d73c8eeed050894ffac17230c40f42b366b713c1cee92272ffe6091daa',1),(12,'usr','usr','usr','65dde25a25139bd3a899ad1f24bd921a3b04409acc72381780093d9545979c6f2102d5d73c8eeed050894ffac17230c40f42b366b713c1cee92272ffe6091daa',0);
+INSERT INTO `korisnici` VALUES (11,'Administrator','Administratorovic','adm','65dde25a25139bd3a899ad1f24bd921a3b04409acc72381780093d9545979c6f2102d5d73c8eeed050894ffac17230c40f42b366b713c1cee92272ffe6091daa',1),(12,'Korisnik','Korisnikovic','usr','65dde25a25139bd3a899ad1f24bd921a3b04409acc72381780093d9545979c6f2102d5d73c8eeed050894ffac17230c40f42b366b713c1cee92272ffe6091daa',0),(13,'Test','Test','test','65dde25a25139bd3a899ad1f24bd921a3b04409acc72381780093d9545979c6f2102d5d73c8eeed050894ffac17230c40f42b366b713c1cee92272ffe6091daa',0);
 /*!40000 ALTER TABLE `korisnici` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,9 +111,7 @@ CREATE TABLE `oglasi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `naslov` varchar(45) NOT NULL,
   `tekst` text NOT NULL,
-  `foto01` varchar(50) DEFAULT NULL,
-  `foto02` varchar(50) DEFAULT NULL,
-  `foto03` varchar(50) DEFAULT NULL,
+  `fotografije` text NOT NULL,
   `dat_objave` date NOT NULL,
   `dat_vazenja` date DEFAULT NULL,
   `arhiviran` int(11) NOT NULL,
@@ -128,7 +125,7 @@ CREATE TABLE `oglasi` (
   CONSTRAINT `oglasi_ibfk_1` FOREIGN KEY (`kategorija_id`) REFERENCES `kategorije` (`id`),
   CONSTRAINT `oglasi_ibfk_2` FOREIGN KEY (`korisnik_id`) REFERENCES `korisnici` (`id`),
   CONSTRAINT `oglasi_ibfk_3` FOREIGN KEY (`potkategorija_id`) REFERENCES `podkategorije` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +134,7 @@ CREATE TABLE `oglasi` (
 
 LOCK TABLES `oglasi` WRITE;
 /*!40000 ALTER TABLE `oglasi` DISABLE KEYS */;
-INSERT INTO `oglasi` VALUES (1,'Neki naslov','probni tekst oglasa 1',NULL,NULL,NULL,'2020-11-06','2020-11-10',0,4,7,11),(3,'Neki naslov','probni tekst oglasa 3',NULL,NULL,NULL,'2020-11-06','2020-11-10',1,4,11,11),(4,'Neki naslov','probni tekst oglasa 444',NULL,NULL,NULL,'2020-11-06','2020-11-10',0,4,7,11),(5,'Neki naslov','Probni tekst oglasa.',NULL,NULL,NULL,'2020-11-27',NULL,0,2,1,12),(6,'Neki naslov','Probni tekst 2.',NULL,NULL,NULL,'2020-11-27',NULL,1,38,6,12),(7,'Neki naslov','Tekst. Proba.',NULL,NULL,NULL,'2020-11-27',NULL,0,38,6,12),(12,'BMW X5, 2018. godiste','eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeee eeeeeeeee eeeeeeee eeeeee eeeeeeeeee eeeeeee eeeeeeeeee eeeeeeeeee eeeeeeeeeee eeeeeeeeeee eeeee eeeeeee eeeeeee eeeeeeeee e e eeeeeeeeeeeeeeeeeeeeee eeeeee',NULL,NULL,NULL,'2021-02-16',NULL,0,2,3,11),(13,'Zgrada, proba','wwwwwww ww wwwwwwww wwwww','1614693862087-zgrada.png',NULL,'1614693913949-zgradaM.png','2021-03-02',NULL,0,3,12,11),(14,'Zgrada, mala slika, proba','ww wwwwwwwwwww wwwwww','1614781008975-zgradaMM.png',NULL,NULL,'2021-03-03',NULL,0,3,12,12);
+INSERT INTO `oglasi` VALUES (16,'Nokia 800 Tough','Na prodaju polovan mobilni telefon, Nokia 800 Tough...','1636467704103-n1.PNG;1636467710557-n2.PNG;','2021-11-09','2021-12-31',0,4,11,11),(17,'Vivo X60 Pro','Potpuno nov mobilni telefon. Neraspakovan...','1636748768592-vx60p_1.jpg;1636748795405-vx60p_2.jpg;1636748805963-vx60p_3.jpg;','2021-11-12',NULL,0,4,7,11),(22,'Kia Spotrage (2021)','Kia Sportage. 2021. godište. Fabricka garancija. Kupljen nov u Crnoj Gori. Drugi vlasnik. 15.000 predenih kilometara. Cijena 30.000 eura.','1640188109860-kia01.PNG;1640188121349-kia02.PNG;1640188129500-kia03.PNG;1640188138859-kia04.PNG;','2021-12-22','2022-06-01',0,2,3,12),(26,'aaa','bbb 12345','','2021-12-27',NULL,0,3,13,13),(28,'BW Scala','Retke su urbane celine u kojima se sve komponente zivotnog stila savrseno uklapaju. BW Scala je jedan takav dragulj: besprekoran spoj savremene stambene arhitekture i prirodnog okruzenja, gradske vreve i spokojstva, funkcionalnog komfora i obilja mogucnosti. To je zivot po meri coveka. To je BW SCALA!\n\nVec od 238.888 eura.','1641306143074-bgwf01.PNG;1641306148591-bgwf02.PNG;1641306154334-bgwf03.PNG;1641306160863-bgwf04.PNG;1641306167304-bgwf05.PNG;','2022-01-04',NULL,0,3,12,12);
 /*!40000 ALTER TABLE `oglasi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +152,7 @@ CREATE TABLE `podkategorije` (
   PRIMARY KEY (`id`),
   KEY `kategorija_id` (`kategorija_id`),
   CONSTRAINT `podkategorije_ibfk_1` FOREIGN KEY (`kategorija_id`) REFERENCES `kategorije` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,7 +161,7 @@ CREATE TABLE `podkategorije` (
 
 LOCK TABLES `podkategorije` WRITE;
 /*!40000 ALTER TABLE `podkategorije` DISABLE KEYS */;
-INSERT INTO `podkategorije` VALUES (1,2,'sedan'),(2,2,'hatchback'),(3,2,'SUV'),(6,7,'Razno'),(7,4,'Smart'),(11,4,'Feature'),(12,3,'Stan'),(13,3,'Plac');
+INSERT INTO `podkategorije` VALUES (1,2,'sedan'),(2,2,'hatchback'),(3,2,'SUV'),(6,7,'Razno'),(7,4,'Smart'),(11,4,'Feature'),(12,3,'Stan'),(13,3,'Plac'),(14,2,'Razno'),(15,4,'Razno'),(16,3,'Razno'),(17,38,'Razno'),(22,38,'proba 07'),(23,3,'Kuca');
 /*!40000 ALTER TABLE `podkategorije` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -177,4 +174,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-03 15:32:25
+-- Dump completed on 2022-01-04 15:25:44

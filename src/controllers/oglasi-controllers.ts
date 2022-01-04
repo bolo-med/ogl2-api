@@ -57,6 +57,7 @@ export const updateOglas = (req: Request, res: Response) => {
     oglas.id = req.body.id;
     oglas.naslov = req.body.naslov;
     oglas.tekst = req.body.tekst;
+    oglas.fotografije = req.body.fotografije;
     oglas.datumObjave = req.body.datumObjave;
     oglas.datumVazenja = req.body.datumVazenja;
     oglas.kategorijaID = req.body.kategorijaID;
